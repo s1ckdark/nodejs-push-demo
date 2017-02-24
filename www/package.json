@@ -1,0 +1,30 @@
+{
+  "name": "www",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "autorun": "nodemon node .bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.2",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.1",
+    "crypto": "~0.0.3",
+    "debug": "~2.2.0",
+    "ejs": "~2.5.2",
+    "express": "~4.14.0",
+    "express-session": "1.5.0",
+    "markdown": "0.5.0",
+    "morgan": "~1.7.0",
+    "mysql": "2.11.1",
+    "nodemailer": "^3.1.3",
+    "sequelize": "^3.30.0",
+    "serve-favicon": "~2.3.0",
+    "socket.io": "^1.7.3",
+    "socket.io-client": "^1.7.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}

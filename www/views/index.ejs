@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ./head.ejs %>
+  </head>
+  <body>
+    <div class="container">
+      <h1><%= title %></h1>
+      <p>메시지 푸시 기능을 사용하고 싶으신가요? 여러분의 도메인(이메일)을 등록하고 인증키를 발급받아 사용하세요!</p>
+      <div class="form-group">
+        <div class="col-xs-8">
+          <input type="email" class="form-control" id="domain" placeholder="" value="">
+        </div>
+        <div class="col-xs-4">
+        <button id="createBtn" type="button" onclick="createDomainKey();" class="btn btn-default">인증키 발급하기</button>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="container">
+      메시지 : <span id="message"></span><br>
+      도메인 : <span id="domainUrl"></span><br>
+      발급키 : <span id="domainKey"></span>
+    </div>
+    <hr>
+    <div class="container">
+      <h3>메시지 푸시 기능 적용 방법</h3>
+      <p>푸시 API 주소 : http://www.djus.co.kr/push?apiKey=인증키&domain=도메인</p>
+      <p>푸시 API 메소드 : POST</p>
+      <p>푸시 API 요청 바디 : message</p>
+      <p>푸시 클라이언트 사용은 다음과 같습니다.</p>
+          <pre>
+            https://cdnjs.com/libraries/socket.io
+            var socket = io('http://www.djus.co.kr');
+            socket.on('connect', function(){
+              socket.emit('join', {"domain" : "도메인"}, (res) => {
+                  // 메시지 푸시는 도메인 별로 전송됩니다.
+              });
+            });
+
+            socket.on('pushed', function(response){
+              // 도메인 별로 푸시받은 메시지를 응답받을 수 있습니다.
+            });
+
+            socket.on('disconnect', function(){
+
+            });
+          </pre>
+    <div>
+    <hr>
+    <div class="container">
+    </div>
+    <script>
+      function createDomainKey(){
+        var dataset = {
+          domainUrl : $('#domain').val()
+        };
+
+        $.ajax({
+          url: "/admin",
+          type: "post",
+          data: dataset,
+          dataType: 'json',
+          beforeSend : function(){
+            $('#createBtn').hide();
+          },
+          success : function(response){
+            $('#message').text(response.message);
+            $('#domainUrl').text(response.domainUrl);
+            $('#domainKey').text(response.domainKey);
+          },
+          error : function(response){
+            $('#message').text(response.responseJSON.message);
+            $('#domainUrl').text(response.responseJSON.domainUrl);
+            $('#domainKey').text(response.responseJSON.domainKey);
+          },
+          complete : function(){
+            $('#createBtn').show();
+          }
+        });
+      }
+    </script>
+    <% include ./footer.ejs %>
+  </body>
+</html>
