@@ -1,4 +1,4 @@
-#노드JS로 알아보는 웹 메시지 푸시 서비스 만들기[개인정보 삭제]  
+#노드JS로 알아보는 웹 메시지 푸시 서비스 만들기  
 
 ![example](example.png)
 
@@ -8,7 +8,7 @@
 *이로인해 서버 애플리케이션을 구축할 수 있는 기술을 다양해졌다고 보면 됩니다. NodeJS, Ruby on Rails, Django, Spring, Vert.x, Lalavel, Play등과 같은!*  
 
 ### 1.1 노드JS 설치하기  
-데비안 계열(Ubuntu)에서 NodeJS를 설치할 경우에는 다음과 같이 curl을 사용해서 설치파일을 가져올 수 있습니다. [nodejs.org](https://nodejs.org)에서 제공하는 쉘 명령어이에요.
+데비안 계열(Ubuntu)에서 NodeJS를 설치할 경우에는 다음과 같이 curl을 사용해서 설치파일을 가져올 수 있습니다. [nodejs.org](https://nodejs.org)에서 제공하는 쉘 명령어입니다.
 
 ```sh
 sudo apt-get install curl
