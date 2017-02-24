@@ -17,11 +17,11 @@ app.set('view engine', 'ejs');
 
 // /public 경로에 파비콘을 저장한 뒤 주석을 해제하세요
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
+app.use(logger('dev')); // 로깅 미들웨어
+app.use(bodyParser.json()); //
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'))); // 정적 리소스 미들웨어
 app.use(session({
   key : 'kdevkr',
   secret : 'secret',
